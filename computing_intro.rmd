@@ -1,0 +1,40 @@
+---
+title: "Introduction To Computing & Software"
+output: html_document
+---
+
+## Software Installation
+
+### R
+
+We will start by downloading <a href="https://cran.r-project.org/mirrors.html">R</a>.
+
+Why R?
+
+### RStudio
+
+Learning and using R is much easier with an integrated development environment (IDE). For your R work, we would recommend that you use <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a>.
+
+Why use an IDE?
+
+### Google Colab
+
+Throughout the program, you'll find yourself using Python (in courses and for your own uses). Likely the easiest way to start is with a *notebook*. A Colab notebook comes with most packages that you would want to use and makes sure they are largely compatible with the running Python version. 
+
+## Your Computer & You
+
+Where to store files?
+
+## Paths & Directories
+
+Typical paths
+
+Mac: ~/project/data/your_data.csv
+
+Windows: C:/Users/sberry5/Documents/project/data/your_data.csv
+
+Relative: Relevant to current directories (data/your_data.csv)
+
+Absolute: Complete path to file
+
+## Directories & Projects

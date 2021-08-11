@@ -1,0 +1,24 @@
+---
+  title: "Data Types & Objects"
+output: html_document
+---
+  
+## Vectors: The Building Block
+
+### Types
+
+#### Numeric
+
+#### Strings
+
+#### Factors
+
+## Matrices
+
+## Lists
+
+## Data Frames
+
+## Working With Data
+
+
