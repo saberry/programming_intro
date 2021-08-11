@@ -25,6 +25,10 @@ Throughout the program, you'll find yourself using Python (in courses and for yo
 
 Where to store files?
 
+Organization is the key.
+
+Directories are safe.
+
 ## Paths & Directories
 
 Typical paths
