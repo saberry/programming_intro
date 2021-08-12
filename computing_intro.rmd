@@ -69,7 +69,7 @@ Where to store files?
 
 The *root* directory is at the top of the hierarchy.
 
-The *working* directory is where your computer is currently looking.
+The *working* directory is where your computer is currently looking for files.
 
 ##
 

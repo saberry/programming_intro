@@ -1,5 +1,5 @@
 ---
-  title: "Data Types & Objects"
+title: "Data Types & Objects"
 output: html_document
 ---
   

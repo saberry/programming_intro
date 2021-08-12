@@ -1,0 +1,44 @@
+---
+title: "Getting Started With Git"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What Is Git?
+
+Git is really simple: it is *version control* software that allows you to track changes within files!
+
+Conceptually simple, but getting started with making it part of your workflow can be a chore.
+
+## Version Control
+
+The primary aim of version control is to not only track changes within a file, but to allow multiple people to be working on the same project. Not only can people collaborate with Git, but you can also create separate branch of work (you can even fork a project to work on it for your own). 
+
+## GitHub
+
+Much like we saw with R and RStudio, Git has a friendly helper in <a href="https://github.com/">GitHub</a>. GitHub is a web-based source for hosting your projects. It is also a place to see what other people are doing!
+
+All you need to do is to register for an account!
+
+## Installing Git
+
+The potential for pain starts now. Head to Git's <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">download page</a>. You will likely find that this is an easy task on a Windows machine -- you can just download and install as you normally would any other piece of software. 
+
+For a Mac, you are going to need to install something else before you can install Git. The download page recommends install Xcode Command Line Tools, but I've never found that to be the easiest. Instead, I would go <a href="https://git-scm.com/download/mac">here</a> and step through the Homebrew process. Install Homebrew and then install Git. The binary installer is listed too, but I haven't used it -- might be worth a try.
+
+## Setting Up Git
+
+Terminal Time! On Windows, you can open up your Command Prompt; on a Mac, you can open your terminal. Once you are there, you can use the following commands:
+
+```
+git config --global user.name "Your Name"
+```
+
+```
+git config --global user.email email@nd.edu
+```
+
+This is what registers everytime you use *commit* something to a project. 
