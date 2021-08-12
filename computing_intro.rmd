@@ -1,44 +1,114 @@
 ---
 title: "Introduction To Computing & Software"
-output: html_document
+output:
+  revealjs::revealjs_presentation:
+    theme: night
+    highlight: pygments
+    center: true
+    transition: fade
+    slide_level: 2
 ---
 
-## Software Installation
+# Software Installation
 
-### R
+## R
 
-We will start by downloading <a href="https://cran.r-project.org/mirrors.html">R</a>.
+Let's start by downloading <a href="https://cran.r-project.org/mirrors.html">R</a>.
+
+What is R?
 
 Why R?
 
-### RStudio
+## RStudio
 
-Learning and using R is much easier with an integrated development environment (IDE). For your R work, we would recommend that you use <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a>.
+Learning and using R is much easier with an integrated development environment (IDE). 
 
-Why use an IDE?
+For your R work, we would recommend that you use <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a>.
 
-### Google Colab
+> - Why use an IDE?
 
-Throughout the program, you'll find yourself using Python (in courses and for your own uses). Likely the easiest way to start is with a *notebook*. A Colab notebook comes with most packages that you would want to use and makes sure they are largely compatible with the running Python version. 
+## Google Colab
 
-## Your Computer & You
+Throughout the program, you'll find yourself using Python.
+
+Likely the easiest way to start is with a *notebook*. 
+
+A Colab notebook comes with most packages that you would want to use.
+
+They are largely compatible with whatever Python is running.
+
+## Better Ways To Use Python?
+
+> - Sure!
+
+</br>
+
+> - But the trouble can be real!
+
+# Your Computer & You {data-background="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif"}
+
+## Storage
 
 Where to store files?
 
-Organization is the key.
+</br>
 
-Directories are safe.
+> - Organization is the key.
 
-## Paths & Directories
+</br>
 
-Typical paths
+> - Directories are safe.
 
-Mac: ~/project/data/your_data.csv
+</br>
 
-Windows: C:/Users/sberry5/Documents/project/data/your_data.csv
+> - Google Drive is handy.
+
+## {data-background="desktop.jpg"}
+
+## Directories & Paths
+
+The *root* directory is at the top of the hierarchy.
+
+The *working* directory is where your computer is currently looking.
+
+##
 
 Relative: Relevant to current directories (data/your_data.csv)
 
 Absolute: Complete path to file
 
-## Directories & Projects
+> - Which of these is more robust?
+
+##
+
+Mac: ~/project/data/your_data.csv
+
+Windows: C:/Users/sberry5/Documents/project/data/your_data.csv
+
+> - These are examples of which type of path?
+
+##  Windows Users: Beware
+
+If you find yourself copying paths from Windows, you are in for some pain!
+
+## Will It Work?
+
+> - C:/Users/sberry5/Documents/project/data/your_data.csv
+
+</br>
+
+> - C:\\Users\\sberry5\\Documents\\project\\data\\your_data.csv
+
+</br>
+
+> - C:\\\\Users\\\\sberry5\\\\Documents\\\\project\\\\data\\\\your_data.csv
+
+## {data-background="https://media.giphy.com/media/W0QduXZQEcNEa8r0oY/giphy.gif"}
+
+## RStudio Projects
+
+An easy way to set your working directory and stay organized!
+
+No need to use our old friend setwd.
+
+> - Although getwd is still helpful!
