@@ -5,13 +5,91 @@ output: html_document
   
 ## Vectors: The Building Block
 
+Think of a vector as a list of information. It is the most simple type of object that R can have. One number, by itself, is a vector. You can also concatenate those single numbers together into a longer vector:
+
+```{r}
+first_vector <- c(1, 3, 5, 7)
+
+first_vector
+```
+
+The vector we just created is a special type of vector: an *atomic* vector. Everything is the same type throughout the entire vector or it will be forced to be so. You can do cool things with vectors, like adding numbers to each *element* of the vector:
+
+```{r}
+first_vector + 10
+```
+
+All we have done is to use R like a fancy calculator! Take just a minute and try the following:
+
+1. Take the `first_vector` object and perform some type of math operation. You can use symbols like: `*`, `/`, `+`,  `-`, `^`, `%/%`, `%%`
+
+2. Whatever you did for step 1, create a new object called `second_vector`
+
+
 ### Types
 
 #### Numeric
 
+Numeric vectors are what would be considered *floating-point numbers* -- an overly-complicated way of saying that these numbers have decimals! Let's create a numeric vector:
+
+```{r}
+numeric_vector <- c(1.2, 2.2, 3.2, 4.2)
+
+typeof(numeric_vector)
+```
+
+This returned `double`, which indicates that we are dealing with a "**double**-precision floating-point" number.
+
+#### Integer
+
+Just like you learned in elementary school, integers are whole numbers. 
+
+Now we are going to see where things get a bit complicated.
+
+What type would the following vector produce?
+
+```{r}
+test_vec <- c(10, 20, 30, 40, 50)
+```
+
+Now we can talk about conversion!
+
 #### Strings
 
+Strings are characters. A vector containing anything other than a number is a character:
+
+```{r}
+character_vector <- c("ABC", "abc", "1,000", "$100", 123)
+
+character_vector
+
+class(character_vector)
+```
+
+
 #### Factors
+
+Ugh...a factor is a string with complication. Since R is a programming language based upon statistics, the notion of the factor is important. You can regard factors as categorical variables:
+
+```{r}
+factor_variable <- as.factor(c("freshman", "sophomore", "junior", "senior"))
+
+factor_variable
+```
+
+This creates a weird problem. Some factors have no clear ordering to them -- factors like race, ethnicity, and gender -- but what we see above has a clear ordering to it. This is where the ordered factor comes in:
+
+```{r}
+ordered_factor <- ordered(factor_variable, 
+                          levels = c("freshman", "sophomore", "junior", "senior"), 
+                          labels = c("freshman", "sophomore", "junior", "senior"))
+```
+
+
+
+#### Logical
+
+#### Specials
 
 ## Matrices
 
