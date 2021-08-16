@@ -15,7 +15,9 @@ Conceptually simple, but getting started with making it part of your workflow ca
 
 ## Version Control
 
-The primary aim of version control is to not only track changes within a file, but to allow multiple people to be working on the same project. Not only can people collaborate with Git, but you can also create separate branch of work (you can even fork a project to work on it for your own). 
+The primary aim of version control is not only to track changes within a file, but to allow multiple people to be working on the same project. You can tell who made changes to a file, when those changes were made, and version control software can merge changes to the same file. 
+
+Git allows for a great deal of functionality. Not only can you collaborate with Git, but you can also create separate branch of work, merge those branches together, and even *fork* a project.
 
 ## GitHub
 
@@ -27,7 +29,7 @@ All you need to do is to register for an account!
 
 The potential for pain starts now. Head to Git's <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">download page</a>. You will likely find that this is an easy task on a Windows machine -- you can just download and install as you normally would any other piece of software. 
 
-For a Mac, you are going to need to install something else before you can install Git. The download page recommends install Xcode Command Line Tools, but I've never found that to be the easiest. Instead, I would go <a href="https://git-scm.com/download/mac">here</a> and step through the Homebrew process. Install Homebrew and then install Git. The binary installer is listed too, but I haven't used it -- might be worth a try.
+For a Mac, you are going to need to install something else before you can install Git. The download page recommends install Xcode Command Line Tools, but I've never found that to be the easiest. Instead, I would go <a href="https://git-scm.com/download/mac">here</a> and step through the Homebrew process. Install Homebrew and then install Git. The binary installer is listed too. It is the easiest way! If you run into any issues, you can find the steps on <a href="https://github.com/timcharper/git_osx_installer">GitHub</a>!
 
 ## Setting Up Git
 
@@ -42,3 +44,9 @@ git config --global user.email email@nd.edu
 ```
 
 This is what registers everytime you use *commit* something to a project. 
+
+## Git: The Easy Way
+
+For now, we will rock with Git in the easiest way possible -- through RStudio.
+
+> Tools > Global Options > Git/SVN

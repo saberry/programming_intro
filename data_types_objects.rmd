@@ -25,7 +25,6 @@ All we have done is to use R like a fancy calculator! Take just a minute and try
 
 2. Whatever you did for step 1, create a new object called `second_vector`
 
-
 ### Types
 
 #### Numeric
@@ -85,18 +84,193 @@ ordered_factor <- ordered(factor_variable,
                           labels = c("freshman", "sophomore", "junior", "senior"))
 ```
 
-
-
 #### Logical
+
+Logical vectors contain TRUE and FALSE:
+
+```{r}
+logical_vector <- c(TRUE, FALSE, TRUE, FALSE)
+
+logical_vector
+```
+
+Check this out!
+
+```{r}
+sum(logical_vector)
+```
+
+To use `T` and `F`?
 
 #### Specials
 
+You will encounter other values within your vectors. 
+
+NA: This is a missing value
+
+NaN: Not a number. R was expecting a number, but didn't get one.
+
+Inf: Infinite. You'll see this happen with many different math operations (e.g., `cumsum`)
+
+Null: Usually is an undefined value.
+
 ## Matrices
+
+If we take a bunch of vectors, we can put them together into a special type of object called a `matrix`.
+
+```{r}
+matrix_example <- matrix(data = c(1:3, 4:6, 7:9), 
+                         nrow = 3, 
+                         ncol = 3)
+
+matrix_example
+```
+
+One limitation you will see in a matrix is that every column must be of the same type.
 
 ## Lists
 
+Now we are starting to get into some more interest ideas. A list is another way to collect objects. However, we are now freed from the constraint that everything needs to be of the same type.
+
+```{r}
+list_example <- list(names = c("seth", "sharif"), 
+                     ages = c(30, 30), 
+                     height = c(76, 76))
+
+list_example
+```
+
+It shouldn't come as a shock that a list can also contain lists:
+
+```{r}
+list_of_lists <- list(professors = list(names = c("seth", "sharif"), 
+                                        ages = c(30, 30), 
+                                        height = c(76, 76)), 
+                      students = list(names = c("joe", "hexuan"), 
+                                      ages = c(23, 25), 
+                                      height = c(64, 64)))
+```
+
+
+Both of our lists are named lists (the best kind to work on). When we print those out, we can see those `$` printing out in the console. Let's see how they work:
+
+```{r}
+list_example$names
+
+list_of_lists$professors$names
+```
+
+Let's chat about that `$`. R has a few special functions and this is one of them! Functions like `$`, `[`, and `[[` help us to access information inside of objects.
+
+Here's how they work:
+
+```{r}
+list_example["names"]
+list_example[1]
+
+list_of_lists[["professors"]]
+list_of_lists[[1]]
+```
+
+And just to reiterate that these really are nothing more than functions, check this out:
+
+```{r}
+`$`(list_example, names)
+
+`[`(list_example, "names")
+
+`[[`(list_of_lists, "professors")
+```
+
+What do you think is the easiest thing to use?
+
 ## Data Frames
+
+Now is the point in which R gets wacky. In the most simple way, a data frame is a special type of list; really, a data frame is a list with some strict rules. Chief among those rules is that every element of the data frame needs to contain the same number of items in each column.
+
+```{r}
+df_example <- data.frame(name = c("seth", "sharif",
+                                  "joe", "hexuan"), 
+                         age = c(30, 30, 23, 25), 
+                         height = c(76, 76, 64, 64), 
+                         role = c("professor", "professor", 
+                                  "student", "student"))
+```
+
 
 ## Working With Data
 
+Let's start with those square brackets and dollar signs.
 
+Remember the dollar sign will extract out exactly 1 variable:
+
+```{r}
+df_example$age
+```
+
+If we want to *select* multiple variables, we can use the square brackets
+
+```{r}
+df_example[, c("age", "role")]
+```
+
+You could do the same thing with numbers:
+
+```{r}
+df_example[, c(2, 4)]
+```
+
+But...that is a dangerous game to play.
+
+We can add more information into those brackets. They work like this:
+
+```
+df_example[row, column]
+```
+
+So if we only want to extract out the first row, we could do something like this:
+
+```{r}
+df_example[1, ]
+```
+
+Or, the first two rows:
+
+```{r}
+df_example[1:2, ]
+```
+
+We can also *filter* within the brackets.
+
+```{r}
+df_example[df_example$role == "student", ]
+```
+
+How would you filter for people over the age of 28?
+
+You aren't limited to single filters! You can use the `&` sign and the `|` sign to specify and/or conditions.
+
+```{r}
+df_example[df_example$role == "student" & 
+             df_example$name == "joe", ]
+```
+
+Let's do a little bit of grouping to our data now. We need to turn to some functions here to make this work. This function will be a little bit more complex than what we have seen, but we can work through it.
+
+Let's just start with a simple mean of age:
+
+```{r}
+mean(x = df_example$age)
+```
+
+Now let's say that we want to group our data by the `role` variable and then get the average age for the two groups that remain. To do that, we can use the aggregate function.
+
+```{r}
+aggregate(x = df_example$age,
+          by = list(group = df_example$role), 
+          mean)
+
+aggregate(age ~ role, 
+          data = df_example, 
+          mean)
+```

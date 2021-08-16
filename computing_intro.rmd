@@ -9,15 +9,19 @@ output:
     slide_level: 2
 ---
 
-# Software Installation
+## Software Installation
 
 ## R
 
-Let's start by downloading <a href="https://cran.r-project.org/mirrors.html">R</a>.
+> - Let's start by downloading <a href="https://cran.r-project.org/mirrors.html">R</a>.
 
-What is R?
+</br>
 
-Why R?
+> - What is R?
+
+</br>
+
+> - Why R?
 
 ## RStudio
 
@@ -43,9 +47,21 @@ They are largely compatible with whatever Python is running.
 
 </br>
 
+> - Pycharm, Anaconda, VS Code are all solid!
+
+</br>
+
 > - But the trouble can be real!
 
-# Your Computer & You {data-background="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif"}
+## Tableau
+
+In Data Viz, you will use <a href="https://www.tableau.com/academic/students">Tableau</a>
+
+## Canvas
+
+Our LMS is <a href="https://www.canvas.nd.edu">Canvas</a>.
+
+## Your Computer & You {data-background="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif"}
 
 ## Storage
 
@@ -65,13 +81,13 @@ Where to store files?
 
 ## {data-background="desktop.jpg"}
 
-## Directories & Paths
+## Directories
 
 The *root* directory is at the top of the hierarchy.
 
 The *working* directory is where your computer is currently looking for files.
 
-##
+## Paths
 
 Relative: Relevant to current directories (data/your_data.csv)
 
@@ -109,6 +125,6 @@ If you find yourself copying paths from Windows, you are in for some pain!
 
 An easy way to set your working directory and stay organized!
 
-No need to use our old friend setwd.
+No need to use our old friend `setwd`.
 
-> - Although getwd is still helpful!
+> - Although `getwd` is still helpful!

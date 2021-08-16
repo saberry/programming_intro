@@ -457,32 +457,62 @@ document.getElementsByTagName('head')[0].appendChild(style);
     <h1 class="title">Introduction To Computing &amp; Software</h1>
 </section>
 
-<section>
-<section id="software-installation" class="title-slide slide level1">
-<h1>Software Installation</h1>
-
+<section id="software-installation" class="slide level2">
+<h2>Software Installation</h2>
 </section>
 <section id="r" class="slide level2">
 <h2>R</h2>
-<p>Let’s start by downloading <a href="https://cran.r-project.org/mirrors.html">R</a>.</p>
-<p>Why R?</p>
+<ul>
+<li class="fragment">Let’s start by downloading <a href="https://cran.r-project.org/mirrors.html">R</a>.</li>
+</ul>
+<p></br></p>
+<ul>
+<li class="fragment">What is R?</li>
+</ul>
+<p></br></p>
+<ul>
+<li class="fragment">Why R?</li>
+</ul>
 </section>
 <section id="rstudio" class="slide level2">
 <h2>RStudio</h2>
-<p>Learning and using R is much easier with an integrated development environment (IDE). For your R work, we would recommend that you use <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a>.</p>
-<p>Why use an IDE?</p>
+<p>Learning and using R is much easier with an integrated development environment (IDE).</p>
+<p>For your R work, we would recommend that you use <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a>.</p>
+<ul>
+<li class="fragment">Why use an IDE?</li>
+</ul>
 </section>
 <section id="google-colab" class="slide level2">
 <h2>Google Colab</h2>
 <p>Throughout the program, you’ll find yourself using Python.</p>
 <p>Likely the easiest way to start is with a <em>notebook</em>.</p>
-<p>A Colab notebook comes with most packages that you would want to use</p>
-<p>They are largely compatible with the running Python version.</p>
-</section></section>
-<section>
-<section id="your-computer-you" class="title-slide slide level1" data-background="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif">
-<h1 data-background="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif">Your Computer &amp; You</h1>
-
+<p>A Colab notebook comes with most packages that you would want to use.</p>
+<p>They are largely compatible with whatever Python is running.</p>
+</section>
+<section id="better-ways-to-use-python" class="slide level2">
+<h2>Better Ways To Use Python?</h2>
+<ul>
+<li class="fragment">Sure!</li>
+</ul>
+<p></br></p>
+<ul>
+<li class="fragment">Pycharm, Anaconda, VS Code are all solid!</li>
+</ul>
+<p></br></p>
+<ul>
+<li class="fragment">But the trouble can be real!</li>
+</ul>
+</section>
+<section id="tableau" class="slide level2">
+<h2>Tableau</h2>
+<p>In Data Viz, you will use <a href="https://www.tableau.com/academic/students">Tableau</a></p>
+</section>
+<section id="canvas" class="slide level2">
+<h2>Canvas</h2>
+<p>Our LMS is <a href="https://www.canvas.nd.edu">Canvas</a>.</p>
+</section>
+<section id="your-computer-you" class="slide level2" data-background="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif">
+<h2 data-background="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif">Your Computer &amp; You</h2>
 </section>
 <section id="storage" class="slide level2">
 <h2>Storage</h2>
@@ -495,21 +525,28 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <ul>
 <li class="fragment">Directories are safe.</li>
 </ul>
+<p></br></p>
+<ul>
+<li class="fragment">Google Drive is handy.</li>
+</ul>
 </section>
 <section id="section" class="slide level2" data-background="desktop.jpg">
 <h2 data-background="desktop.jpg"></h2>
 </section>
-<section id="directories-paths" class="slide level2">
-<h2>Directories &amp; Paths</h2>
-<p>The <em>root</em> directory is at the top of the hierarchy</p>
-<p>The <em>working</em> directory is where your computer is currently looking.</p>
+<section id="directories" class="slide level2">
+<h2>Directories</h2>
+<p>The <em>root</em> directory is at the top of the hierarchy.</p>
+<p>The <em>working</em> directory is where your computer is currently looking for files.</p>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
+<section id="paths" class="slide level2">
+<h2>Paths</h2>
 <p>Relative: Relevant to current directories (data/your_data.csv)</p>
 <p>Absolute: Complete path to file</p>
+<ul>
+<li class="fragment">Which of these is more robust?</li>
+</ul>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <p>Mac: ~/project/data/your_data.csv</p>
 <p>Windows: C:/Users/sberry5/Documents/project/data/your_data.csv</p>
@@ -535,9 +572,17 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li class="fragment">C:\\Users\\sberry5\\Documents\\project\\data\\your_data.csv</li>
 </ul>
 </section>
-<section id="section-3" class="slide level2" data-background="https://media.giphy.com/media/W0QduXZQEcNEa8r0oY/giphy.gif">
+<section id="section-2" class="slide level2" data-background="https://media.giphy.com/media/W0QduXZQEcNEa8r0oY/giphy.gif">
 <h2 data-background="https://media.giphy.com/media/W0QduXZQEcNEa8r0oY/giphy.gif"></h2>
-</section></section>
+</section>
+<section id="rstudio-projects" class="slide level2">
+<h2>RStudio Projects</h2>
+<p>An easy way to set your working directory and stay organized!</p>
+<p>No need to use our old friend <code>setwd</code>.</p>
+<ul>
+<li class="fragment">Although <code>getwd</code> is still helpful!</li>
+</ul>
+</section>
     </div>
   </div>
 
