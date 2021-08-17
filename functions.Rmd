@@ -1,11 +1,151 @@
 ---
-title: "Functions"
-output: html_document
+title: "Packages, I/O, & Functions"
+output:
+  html_document:
+    theme: darkly
+    highlight: breezedark
+    toc: true
+    toc_float: true
+    code_folding: show
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, comment = "")
 ```
 
+## Packages
+
+Yesterday, we kept everything in `base` R. However, R has 18045 `packages` and grows by the day. 
+
+Fortunately R doesn't come with every package already installed; instead, it comes with a small set of packages that can do everything you would ever want to do. While the power is infinite, time is not. Since R (Python and Julia, too) is an open-source language, people have contributed packages back to the community. The vast majority of these packages will not be necessary for you.
+
+The Comprehensive R Archive Network (CRAN) holds all of the "official" R packages, with more hosted on GitHub and Bioconductor. 
+
+For a nicer breakdown of what packages are out there and what they do, you can check out the <a href="https://cloud.r-project.org/web/views/">CRAN Task Views</a>.
+
+Let's say that we are interested in visualizing some relationships. That's great, R comes with tons of base plots:
+
+```{r}
+plot(mtcars$disp, mtcars$mpg)
+abline(lm(mpg ~ disp, data = mtcars))
+```
+
+Altogether, not terribly difficult. Creating such a simple plot, though, required 3 total functions and nothing in `abline` is friendly. Many people have solved the plotting problem and implemented better solutions in their own packages.
+
+Let's install 2 packages:
+
+```{r, eval = FALSE}
+install.packages(c("car", "ggplot2"))
+```
+
+These packages have been downloaded to our machines, but they are not ready to use. We have to make them accessible to our global environment and we do that with `library`:
+
+```{r}
+library(car)
+```
+
+Using library loads the entire package. If I just want to use 1 function from a package, I could also do this:
+
+```{r}
+car::scatterplot(mpg ~ disp, 
+            data = mtcars)
+```
+
+Not bad, but that is a little messy for my taste. If I want to tweak this visualization, how might I do it?
+
+While this is fine, it is far the vanguard of statistical visualization. Instead, we should use `ggplot2`.
+
+```{r}
+library(ggplot2)
+```
+
+We can construct the same scatterplot:
+
+```{r}
+ggplot(data = mtcars, 
+       mapping = aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+And then do something crazy:
+
+```{r, eval = FALSE}
+install.packages('plotly')
+```
+
+## The Ins and Outs
+
+### The Humble CSV
+
+The comma-separated value (csv) file is the most common way that you will move data around for R. They are nothing more than text files, with some specific formatting. The great thing about a csv is that it is both human readable and human editable (though you probably don't want to get into the business of editing one by hand). There are many ways to read a csv file into R:
+
+```{r}
+st_joe_land <- read.delim(file = "stJoeLand.csv", sep = ",")
+
+st_joe_land <- read.csv(file = "stJoeLand.csv")
+```
+
+Both of those will return the exact same result!
+
+Nothing too fancy is required for a `read.csv` -- R won't perform any magic on the variables, but it will coerce the variable names into valid R names. It won't mess up your variables and it behaves as you would expect it to.
+
+A major gripe against `read.csv` is that it is slow. A few packages have gotten around those limitations:
+
+```{r, eval = FALSE}
+install.packages(c("readr", "data.table"))
+```
+
+Let's try those out:
+
+```{r}
+st_joe_land_readr <- readr::read_csv(file = "stJoeLand.csv")
+
+st_joe_land_datatable <- data.table::fread(input = "stJoeLand.csv")
+```
+
+I tend to opt towards data.table for my reading.
+
+### Excel
+
+People will send you an Excel file...you don't have to be friends with them, but you should still be kind to them.
+
+```{r}
+install.packages("readxl")
+```
+
+And now:
+
+```{r}
+st_joe_land_excel <- readxl::read_excel(path = "stJoeLand.xlsx")
+```
+
+
+### R Data
+
+
 ## What Is A Function?
+
+We just used a bunch of functions that other people have written and there is nothing wrong with that -- we all stand on the shoulders of giants!
+
+A function is nothing more than an object -- but it is an object that acts upon another object!
+
+We've already used functions that R has built into it and functions that come in other packages, but let's write our own.
+
+We are going to do something really easy: let's describe how to calculate an arithmetic mean.
+
+Let's take those steps and put them into a function:
+
+```{r}
+my_mean <- function(x)  x_length <- length(x); x_sum <- sum(x); x_average <- x_sum / x_length; return(x_average)
+
+my_mean <- function(x) {
+  x_length <- length(x)
+  x_sum <- sum(x)
+  x_average <- x_sum / x_length
+  return(x_average)
+}
+
+my_mean()
+```
 
