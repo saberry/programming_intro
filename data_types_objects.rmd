@@ -1,17 +1,29 @@
 ---
 title: "Data Types & Objects"
-output: html_document
+output:
+  html_document:
+    theme: darkly
+    highlight: breezedark
+    toc: true
+    toc_float: true
+    code_folding: show
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "")
+```
   
 ## Vectors: The Building Block
 
-Think of a vector as a list of information. It is the most simple type of object that R can have. One number, by itself, is a vector. You can also concatenate those single numbers together into a longer vector:
+Think of a vector as a list of information. It is the most simple type of object that R can have. One number, by itself, is a vector (a vector of length 1). You can also concatenate (that is what the `c` function does) those single numbers together into a longer vector:
 
 ```{r}
 first_vector <- c(1, 3, 5, 7)
 
 first_vector
 ```
+
+Note the assignment operator (you can also use an `=`, but people have strong opinions). On a Windows machine, you can insert the `<-` symbol with Alt + - and on a Mac it is option + -
 
 The vector we just created is a special type of vector: an *atomic* vector. Everything is the same type throughout the entire vector or it will be forced to be so. You can do cool things with vectors, like adding numbers to each *element* of the vector:
 
@@ -65,6 +77,7 @@ character_vector
 class(character_vector)
 ```
 
+It will take a while to warm up to strings, but the real magic comes when you dive into fun string operations!
 
 #### Factors
 
@@ -128,9 +141,11 @@ matrix_example
 
 One limitation you will see in a matrix is that every column must be of the same type.
 
+Matrices are great for holding information and are one of the lighter ways of representing data. Another issue is that they are just a little trickier to work on.
+
 ## Lists
 
-Now we are starting to get into some more interest ideas. A list is another way to collect objects. However, we are now freed from the constraint that everything needs to be of the same type.
+Now we are starting to get into some more interesting ideas. A list is another way to collect objects. However, we are now freed from the constraint that everything needs to be of the same type.
 
 ```{r}
 list_example <- list(names = c("seth", "sharif"), 
@@ -151,8 +166,7 @@ list_of_lists <- list(professors = list(names = c("seth", "sharif"),
                                       height = c(64, 64)))
 ```
 
-
-Both of our lists are named lists (the best kind to work on). When we print those out, we can see those `$` printing out in the console. Let's see how they work:
+Both of our lists are *named* lists (the best kind to work on). When we print those out, we can see those `$` printing out in the console. Let's see how they work:
 
 ```{r}
 list_example$names
@@ -182,21 +196,36 @@ And just to reiterate that these really are nothing more than functions, check t
 `[[`(list_of_lists, "professors")
 ```
 
+And just to show you something silly:
+
+```{r}
+list_of_lists |> 
+  getElement(1) |>
+  getElement("names")
+```
+
 What do you think is the easiest thing to use?
 
 ## Data Frames
 
-Now is the point in which R gets wacky. In the most simple way, a data frame is a special type of list; really, a data frame is a list with some strict rules. Chief among those rules is that every element of the data frame needs to contain the same number of items in each column.
+Now is the point in which R gets wacky. In the most simple way, a data frame is a special type of list; really, a data frame is a list with some strict rules. Chief among those rules is that every element of the data frame needs to contain the same number of items in each column; in other words, there needs to be the same number of rows.
 
 ```{r}
 df_example <- data.frame(name = c("seth", "sharif",
-                                  "joe", "hexuan"), 
-                         age = c(30, 30, 23, 25), 
-                         height = c(76, 76, 64, 64), 
+                                  "joe", "hexuan", 
+                                  "hermalena"), 
+                         age = c(30, 30, 23, 25, 30), 
+                         height = c(76, 76, 64, 64, 68), 
                          role = c("professor", "professor", 
-                                  "student", "student"))
+                                  "student", "student", 
+                                  "student_services"))
+
+df_example
+
+str(df_example)
 ```
 
+Let's learn some helpful functions for looking at this data frame.
 
 ## Working With Data
 
@@ -263,7 +292,7 @@ Let's just start with a simple mean of age:
 mean(x = df_example$age)
 ```
 
-Now let's say that we want to group our data by the `role` variable and then get the average age for the two groups that remain. To do that, we can use the aggregate function.
+Now let's say that we want to group our data by the `role` variable and then get the average age for the two groups that remain. To do that, we can use the `aggregate` function.
 
 ```{r}
 aggregate(x = df_example$age,
@@ -274,3 +303,19 @@ aggregate(age ~ role,
           data = df_example, 
           mean)
 ```
+
+Cool, but can we filter out everyone over 72" in height?
+
+## Helpful Resources
+
+The <a href="https://swirlstats.com/students.html">swirl</a> package is absolutely top notch!
+
+The <a href="https://www.burns-stat.com/documents/books/the-r-inferno/">R Inferno</a> is old, but will never age.
+
+<a href="https://www.statmethods.net/index.html">Quick-R</a> has been around forever. Unfortunate that DataCamp got involved with it.
+
+The <a href="https://rseek.org/">rseek</a> page might be helpful.
+
+You can waste time and get inspiration from <a href="https://www.r-bloggers.com/">R-bloggers</a>.
+
+Finally, <a href="https://stackoverflow.com/">stackoverflow</a> has the answer to every question you might have.
