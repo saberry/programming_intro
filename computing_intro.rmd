@@ -55,7 +55,7 @@ They are largely compatible with whatever Python is running.
 
 ## Tableau
 
-In Data Viz, you will use <a href="https://www.tableau.com/academic/students">Tableau</a>
+In Data Viz, you will use <a href="https://www.tableau.com/academic/students">Tableau</a>.
 
 ## Canvas
 
