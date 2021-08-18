@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, comment = "")
+knitr::opts_chunk$set(echo = TRUE, comment = "", message = FALSE, warning = FALSE)
 ```
 
 ## Packages
@@ -118,13 +118,13 @@ names(st_joe_land_datatable)[names(st_joe_land_datatable) == "Zip Code"] <-
 
 People will send you an Excel file...you don't have to be friends with them, but you should still be kind to them.
 
-```{r}
+```{r, eval = FALSE}
 install.packages("readxl")
 ```
 
 And now:
 
-```{r}
+```{r, eval = FALSE}
 st_joe_land_excel <- readxl::read_excel(path = "stJoeLand.xlsx")
 ```
 
