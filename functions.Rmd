@@ -90,7 +90,7 @@ Both of those will return the exact same result!
 
 Nothing too fancy is required for a `read.csv` -- R won't perform any magic on the variables, but it will coerce the variable names into valid R names. It won't mess up your variables and it behaves as you would expect it to.
 
-A major gripe against `read.csv` is that it is slow. A few packages have gotten around those limitations:
+A major gripe against `read.csv` is that it is slow and people get annoyed with the variable name changes. A few packages have gotten around those limitations:
 
 ```{r, eval = FALSE}
 install.packages(c("readr", "data.table"))
@@ -105,6 +105,14 @@ st_joe_land_datatable <- data.table::fread(input = "stJoeLand.csv")
 ```
 
 I tend to opt towards data.table for my reading.
+
+Changing names is easy enough, so always feel inclined to handle things you want to rename:
+
+```{r}
+names(st_joe_land_datatable)[names(st_joe_land_datatable) == "Zip Code"] <- 
+  "Zip_Code"
+```
+
 
 ### Excel
 
@@ -123,6 +131,31 @@ st_joe_land_excel <- readxl::read_excel(path = "stJoeLand.xlsx")
 
 ### R Data
 
+As you progress through classes, you will need to make good friends with `save` and `load`. 
+
+You can save any R objects like this:
+
+```{r, eval = FALSE}
+save(st_joe_land, st_joe_land_datatable, file = "stJoeInfo.RData")
+```
+
+You can then load that saved data back into R:
+
+```{r, eval = FALSE}
+load("stJoeInfo.RData")
+```
+
+So...why would you want to do this?
+
+Let's string some stuff together. First, try to use the aggregate function (going all the way back to yesterday) to get the average sale prices across the school districts -- which has the highest average sale price?
+
+Now, create a visualization. First, though, try seeing which school district has the most houses in this data:
+
+```{r}
+summary(as.factor(st_joe_land$school_district))
+```
+
+Subset your data down to only contain houses within that school district and visualize the relationship between sale price and any other numeric variable.
 
 ## What Is A Function?
 
@@ -137,15 +170,40 @@ We are going to do something really easy: let's describe how to calculate an ari
 Let's take those steps and put them into a function:
 
 ```{r}
-my_mean <- function(x)  x_length <- length(x); x_sum <- sum(x); x_average <- x_sum / x_length; return(x_average)
-
-my_mean <- function(x) {
-  x_length <- length(x)
-  x_sum <- sum(x)
-  x_average <- x_sum / x_length
-  return(x_average)
+my_mean <- function(numbers) {
+  # The length function gives the length
+  # of a vector. Use nrow for number of
+  # rows in a data.frame.
+  numbers_length <- length(numbers)
+  numbers_sum <- sum(numbers)
+  numbers_average <- numbers_sum / numbers_length
+  # The return function isn't strictly necessary,
+  # but it is a safe way of handling this. You could
+  # also just put numbers_average at the end and
+  # it would print out.
+  return(numbers_average)
 }
 
-my_mean()
+my_mean(st_joe_land$sale_price)
+```
+
+Let's see if we can make something else, but with a few more arguments.
+
+```{r}
+mean_scaler <- function(numbers, center = TRUE) {
+  if(center == TRUE) {
+    result <- my_mean(numbers - my_mean(numbers))
+  } else result <- my_mean(numbers)
+  return(result)
+}
+```
+
+
+```{r}
+apply(X = st_joe_land[, c("sale_price", "year_built")], 
+      MARGIN = 2, 
+      FUN = mean)
+
+colMeans(st_joe_land[, c("sale_price", "year_built")])
 ```
 
